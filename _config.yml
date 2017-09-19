@@ -16,7 +16,7 @@
 title: Craftwork
 email: splunkett@8thLight.com
 description: > # this means to ignore newlines until "baseurl:"
-  This blog documents and explores one my path toward technical and professional mastery.
+  This blog documents and explores one apprentice software crafter's history, headspace, and lessons learned, whilst traveling along the unending path toward technical expertise and professional mastery.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  scottyplunkett
