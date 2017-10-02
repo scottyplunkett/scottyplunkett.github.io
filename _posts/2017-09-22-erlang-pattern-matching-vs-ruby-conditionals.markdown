@@ -4,7 +4,6 @@ title:  "Erlang Pattern Matching vs. Ruby Conditionals"
 date:   2017-09-22 14:48:09 -0500
 categories: technical-development erlang-vs-ruby
 ---
-
 Let's begin making sense of how these two compare by looking at Ruby If/Elsif/Else Conditionals vs. Erlang Pattern Matching.
 
 Using If in Ruby:
