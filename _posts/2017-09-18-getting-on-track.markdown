@@ -2,7 +2,7 @@
 layout: post
 title:  "Getting on Track: WindyCity Rails Presentations and Presenters that Reaffirmed My Choice to Pursue the Craft"
 date:   2017-09-18 14:48:09 -0500
-categories: rails software craftsmanship professional development
+categories: professional-development windycity-rails
 ---
 Last monday was my first day as a resident apprentice at 8th Light.  I was fortunate to have started the same week as WindyCity Rails, a conference produced by 8th Light and ChicagoRuby.  I was able to attend and help with the set-up and day-to-day operation during the conference, which was exciting in its own right because it was my first software 'developer' conference, and Rails is the framework I've spent the most time in; having graduated this past May from Code Platoon, a non-profit coding bootcamp for veterans here in Chicago. Rails is a core component of the curriculuum.  
 
