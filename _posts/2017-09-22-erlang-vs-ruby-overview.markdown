@@ -19,7 +19,7 @@ So let's say, like me, you've had to forego some type of middle ground language 
 
 [Erlang vs. Ruby Overview](#)
 
-[Erlang Pattern Matching vs. Ruby Conditionals](../../../2017/09/22/erlang-pattern-matching-vs-ruby-conditionals.html/)
+[Erlang Pattern Matching vs. Ruby Conditionals](../../../2017/09/22/erlang-pattern-matching-vs-ruby-conditionals.html)
 
-[Erlang Guards vs. Ruby Ternary Operator](../../../2017/09/22/erlang-guards-vs-ruby-ternary-operator.html/)
+[Erlang Guards vs. Ruby Ternary Operator](../../../2017/09/22/erlang-guards-vs-ruby-ternary-operator.html)
 
