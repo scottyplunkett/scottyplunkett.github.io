@@ -4,7 +4,6 @@ title:  "Erlang Guards vs. Ruby Ternary Operator"
 date:   2017-09-22 14:48:09 -0500
 categories: technical-development erlang-vs-ruby
 ---
-I better make a quick public announcement before I launch into the following attempt at clarifying Erlang through Ruby concepts: These blog post represent one way of comparing and contrasting differences between Erlang and Ruby, they are by no means a guide to understanding the fundamental differences inside the languages.  We are focusing on small similarities between small bits of working code. This is not a guide to theory, this is a guide to quick implementation so that you can get up and running quicker through some pragmatic comparisons.  Try to implement these comparative strategies or find your own analogies, but understand that we are just scratching at the surface.
 
 Follow along by forking the [example code](https://github.com/scottyplunkett/erlang-vs-ruby) or copy and paste from the below.
 
@@ -24,9 +23,9 @@ class GruntOnPost
 end
 ```
 
-Pretty succinct, right?  That's because we used a shorthand bitwise operator called the the ternary operator.  
+Pretty succinct, right?  That's because we used the ternary operator.  
 
-Now if you're wondering what a 'Mozambique Drill,' is: 
+Now if you're wondering what a '[Mozambique Drill](https://en.wikipedia.org/wiki/Mozambique_Drill),' is: 
 It's a drill that Marines use to convince folks who want to do harm that instead they should take a nap on the floor forever.  
 More importantly, in the above code it represents what happens when the threat is within a distance value of 25; 
 and conversely, 'Stay Frosty,' represents what happens if a threat is not inside 25.
@@ -53,10 +52,8 @@ react_to_threat(_) -> "Stay Frosty." .
 Just like in our Ruby code with the Ternary, using Guards in Erlang, there are two potential situations (binary condition), the guard `when Threat_Distance <= 25` evaluates to false or it evaluates to true, and we tell our Grunt to behave differently in scenarios when the guard clause evaluates to true.
 
 
-In case my 10000 lb. analogy didn't hit you yet: Like Marines standing post, Guards maintain situational (state) awareness and change behavior only when neccesary.
+In case my 10,000lb. analogy didn't hit you yet: Like Marines standing post, Guards maintain situational (state) awareness and allow the program to be evaluated only when their statement evaluates true.
 
-If only I could have had a few (10 million or so concurrently running) Erlang Guards to watch post for me when I was in Iraq, I bet we could have taken a lot more naps.  Who doesn't like naps?  
-
-Erlang Guards = Naps   
+Erlang Guards = Naps
 
 

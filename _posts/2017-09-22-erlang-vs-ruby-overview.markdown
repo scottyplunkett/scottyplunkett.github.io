@@ -17,6 +17,13 @@ You object; we know, and in the Erlang ecosystem that's abject and dare I say, o
 
 So let's say, like me, you've had to forego some type of middle ground language (Elixir) for the time being and jump straight into the deepend with the highly functional Erlang.  These post should get you started and give you a good idea of some of the major differences you'll quickly need to understand to begin translating Ruby-isms into Er-lingo.  
 
+
+____________________________
+<blockquote>
+I better make a quick public announcement before I launch into the following attempt at clarifying Erlang through Ruby concepts: These blog post represent one way of comparing and contrasting differences between Erlang and Ruby, they are by no means a guide to understanding the fundamental differences inside the languages.  We are focusing on small similarities between small bits of working code. This is not a guide to theory, this is a guide to quick implementation so that you can get up and running quicker through some pragmatic comparisons.  Try to implement these comparative strategies or find your own analogies, but understand that we are just scratching at the surface.
+</blockquote>
+____________________________
+
 [Erlang vs. Ruby Overview](#)
 
 [Erlang Pattern Matching vs. Ruby Conditionals](../../../2017/09/22/erlang-pattern-matching-vs-ruby-conditionals.html)
