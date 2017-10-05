@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Erlang Pattern Matching vs. Ruby Conditionals</title>
+  <meta name="description" content="Let’s begin making sense of how these two compare by looking at Ruby If/Elsif/Else Conditionals vs. Erlang Pattern Matching.">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="http://localhost:4000/technical-development/erlang-vs-ruby/2017/09/22/erlang-pattern-matching-vs-ruby-conditionals.html">
+  <link rel="alternate" type="application/rss+xml" title="Craftwork" href="/feed.xml">
+  
+  
+</head>
+
+
+  <body>
+
+    <header class="site-header" role="banner">
+
+  <div class="wrapper">
+    
+    
+    <a class="site-title" href="/">Craftwork</a>
+  
+    
+      <nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+          
+            
+            
+          
+            
+            
+            <a class="page-link" href="/about/">About</a>
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+        </div>
+      </nav>
+    
+  </div>
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Erlang Pattern Matching vs. Ruby Conditionals</h1>
+    <p class="post-meta">
+      <time datetime="2017-09-22T14:48:09-05:00" itemprop="datePublished">
+        
+        Sep 22, 2017
+      </time>
+      </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Let’s begin making sense of how these two compare by looking at Ruby If/Elsif/Else Conditionals vs. Erlang Pattern Matching.</p>
+
+<p>Follow along by forking the <a href="https://github.com/scottyplunkett/erlang-vs-ruby">example code</a> or copy and paste from the below.</p>
+
+<hr />
+
+<h1 id="using-if-in-ruby">Using If in Ruby:</h1>
+
+<p>Let’s say you’re a Drill Instructor with a group of recruits that are standing in formation awaiting inspection.  When you step in front of a recruit, you inspect their uniform and offer them encouragement depending on the condition of their uniform.</p>
+
+<p>In ruby you might create a Drill Instructor class object and give it a method that uses an if, elsif, else conditional statement:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">DrillInstructor</span>
+  <span class="k">def</span> <span class="nf">give_recruit_encouragement</span><span class="p">(</span><span class="n">uniform_rating</span><span class="p">)</span>
+   <span class="k">if</span> <span class="n">uniform_rating</span> <span class="o">==</span> <span class="mi">1</span>
+     <span class="s2">"Good to go recruit."</span>
+   <span class="k">elsif</span> <span class="n">uniform_rating</span> <span class="o">==</span> <span class="mi">2</span>
+     <span class="s2">"Nasty recruit."</span>
+   <span class="k">else</span> 
+     <span class="s2">"Heinous recruit! Go get on my quarterdeck!"</span>
+   <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>Let’s try to parse the code above into it’s definitive pieces so that we can better understand what makes it function. Perhaps we can avoid getting lost in translation later, when we have to think in Erlang, by applying a functional understanding of our Ruby code.</p>
+
+<p>Here are the pieces:</p>
+
+<ol>
+
+<li>
+<b>Class</b>
+
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">DrillInstructor</span></code></pre></figure>
+
+<blockquote>
+when instantiated creates an Object,
+that holds the behavior we gave it through our method declaration
+ex. drill_instructor = DrillInstructor.new
+</blockquote>
+</li>
+
+<li>
+<b>Method</b>
+
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">give_recruit_encouragement</span></code></pre></figure>
+
+<blockquote>
+we declared our method with the def keyword 
+and gave it a name so that we can 
+call this functionality by name on our object
+ex. drill_instructor.give_recruit_encouragement
+</blockquote>
+</li>
+
+<li>
+<b>Parameter</b>
+
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">uniform_rating</span></code></pre></figure>
+
+<blockquote>
+we abstractly describe the values that we expect
+to be passed into our method through parameters
+rather than describing the values themselves, 
+when called, this abstraction is replaced 
+by an actual value
+ex. drill_instructor.give_recruit_encouragement(1)
+</blockquote>
+</li>
+
+
+<li>
+<b>Conditional Statement</b>
+
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="n">uniform_rating</span> <span class="o">==</span> <span class="mi">1</span></code></pre></figure>
+
+<blockquote>
+here we start our conditional, and begin to encode expecations (1)
+</blockquote>
+
+</li>
+
+<li>
+<b>Expression</b>
+
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="s2">"Good to go recruit."</span></code></pre></figure>
+
+<blockquote>
+this where we give our code to something to evaluate, or what should 
+happen (printing a string of encouragement) if the expected value (1)
+is encountered
+(although it has no explicit return statement because we don't 
+always need one in Ruby what we're really saying is return the string 
+"Good to go recruit.")
+</blockquote>
+</li>
+
+<li>
+<b>Conditional Statement</b>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">elsif</span> <span class="n">uniform_rating</span> <span class="o">==</span> <span class="mi">2</span></code></pre></figure>
+
+<blockquote>
+if our uniform_rating made it passed the first statement, here's t
+he second most likely expected value 
+</blockquote>
+</li>
+
+<li>
+<b>Expression</b>
+
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="s2">"Nasty recruit."</span></code></pre></figure>
+
+<blockquote>
+when our method is given the expected value of (2) 
+evaluate the expression: return the string "Nasty recruit"
+</blockquote>
+</li>
+
+<li>
+<b>Conditional Statement</b>
+
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">else</span></code></pre></figure>
+
+<blockquote>
+here we are saying it's possible we'll have something that doesn't 
+meet our expectations, and there's a need to do something other 
+than what we did when a 1 or a 2 is passed into our method
+this third possible value could be 
+something like our other expectations (3), 
+or it could be something totally different ("foobar")
+</blockquote>
+</li>
+
+<li>
+<b>Expression</b>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="s2">"Heinous recruit! Go get on my quarterdeck!"</span></code></pre></figure>
+
+<blockquote>
+in any case we don't get a 1 or 2 
+value as our uniform_rating parameter
+evaluate the expression: return the string 
+"Heinous recruit! Go get on my quarterdeck!"
+</blockquote>
+</li>
+</ol>
+
+<p>That was exhaustive. Thinking functionally will feel that way at first.</p>
+
+<p>You may have heard some version of the axiom: “In Ruby, everything is technically an object.” This is one of those simplifications that I encountered early on when learning to code, that was totally helpful in understanding how to think Object Oriented; unfortunately, <a href="http://rubylearning.com/blog/2010/09/27/almost-everything-is-an-object-and-everything-is-almost-an-object/">it’s also a lie</a> and in the truth lies a useful concept for those going from Ruby to Erlang:</p>
+
+<p>Not everything in Ruby is an object, but everything in Ruby evaluates to an object.</p>
+
+<p>This is similar to the way that in functional languages, everything returns something.</p>
+
+<p>Now, Erlang does have an ‘If’ but it doesn’t work like the If conditionals of object oriented languages, so let’s pretend the Erlang ‘If’ doesn’t exist for a moment.</p>
+
+<p>I found that translating something like the Ruby code above into Erlang, is aided by an understanding of pattern matching.</p>
+
+<hr />
+
+<h1 id="using-pattern-matching-in-erlang">Using Pattern Matching in Erlang:</h1>
+
+<p>I think of pattern matching as a means to communicate how we’d like our program to behave in the various states we expect it to encounter when executing.</p>
+
+<ul>
+We do this through explicit declaration of:
+	<li>The different arguments we expect will be passed to a function.</li>
+	<li>The expression/s to be evaluated if an expected argument is encountered.</li>
+</ul>
+<p>In Erlang we might use pattern matching inside a drill_instructor module to write the above like so:</p>
+
+<figure class="highlight"><pre><code class="language-erlang" data-lang="erlang"><span class="p">-</span><span class="ni">module</span><span class="p">(</span><span class="n">drill_instructor</span><span class="p">).</span>
+<span class="p">-</span><span class="ni">export</span><span class="p">([</span><span class="n">give_recruit_encouragement</span><span class="o">/</span><span class="mi">1</span><span class="p">]).</span>
+
+<span class="nf">give_recruit_encouragement</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">"Good to go recruit.</span><span class="si">~n</span><span class="s">"</span><span class="p">);</span>
+<span class="nf">give_recruit_encouragement</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">"Nasty recruit.</span><span class="si">~n</span><span class="s">"</span><span class="p">);</span>
+<span class="nf">give_recruit_encouragement</span><span class="p">(_)</span> <span class="o">-&gt;</span> <span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">"Heinous recruit! Go get on my quarterdeck!</span><span class="si">~n</span><span class="s">"</span><span class="p">).</span></code></pre></figure>
+
+<p>Let’s use the parts from our Ruby code to see how we might arrive at the above code.</p>
+
+<ol>
+  <li>The Ruby class: Drill Instructor, becomes the Erlang module: drill_instructor
+    In Ruby our class stored our behaviors
+    In Erlang a module stores functions 
+        NOTE: A module must have the same name as the file that holds its definition 
+        -module(drill_instructor). =&gt; must be at the top of a file named drill_instructor.erl</li>
+  <li>The Ruby method: give_recruit_encouragement, becomes the Erlang function: give_recruit_encouragement</li>
+  <li>The Ruby parameter: uniform_rating, becomes the 1 in the Erlang export declaration</li>
+  <li>The Ruby conditional statement: if uniform_rating == 1, becomes the Erlang function head: give_recruit_encouragement(1) -&gt;</li>
+  <li>The Ruby expression: “Good to go recruit.”, becomes the Erlang expression: io:format(“Good to go recruit.~n”);</li>
+  <li>The Ruby conditional statement:  elsif uniform_rating == 2, becomes the Erlang function head: give_recruit_encouragement(2) -&gt;</li>
+  <li>The Ruby expression: “Nasty recruit.”, becomes the Erlang expression: io:format(“Nasty recruit.~n”);</li>
+  <li>The Ruby conditional statement: else, becomes the Erlang function head: give_recruit_encouragement(_);</li>
+  <li>The Ruby expression: “Heinous recruit! Go get on my quarterdeck!”, becomes the Erlang expression: io:format(“Heinous recruit! Go get on my quarterdeck!~n”).</li>
+</ol>
+
+  </div>
+
+  
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Craftwork</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>
+            
+              Craftwork
+            
+            </li>
+            
+            <li><a href="mailto:splunkett@8thLight.com">splunkett@8thLight.com</a></li>
+            
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/scottyplunkett"><span class="icon icon--github"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">scottyplunkett</span></a>
+
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>This blog documents and explores one apprentice software crafter&#39;s history, headspace, and lessons learned, whilst traveling along the unending path toward technical expertise and professional mastery.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

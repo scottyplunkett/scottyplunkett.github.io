@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-10-05T16:16:16-05:00</updated><id>http://localhost:4000/</id><title type="html">Craftwork</title><subtitle>This blog documents and explores one apprentice software crafter's history, headspace, and lessons learned, whilst traveling along the unending path toward technical expertise and professional mastery.
+</subtitle><entry><title type="html">Functional Programming Introduced</title><link href="http://localhost:4000/technical-development/functional-programming/2017/10/05/functional-programming-introduced.html" rel="alternate" type="text/html" title="Functional Programming Introduced" /><published>2017-10-05T10:48:09-05:00</published><updated>2017-10-05T10:48:09-05:00</updated><id>http://localhost:4000/technical-development/functional-programming/2017/10/05/functional-programming-introduced</id><content type="html" xml:base="http://localhost:4000/technical-development/functional-programming/2017/10/05/functional-programming-introduced.html">&lt;p&gt;This is the first in a series of post I’m writing to explore functional programming as I’m learning about it.  Coming from imperative languages and object oriented programming, my hope is to wrap up some of the concepts in brief posts that other developers making the same mental leap between programming styles will find useful as quick reference material.&lt;/p&gt;
+
+&lt;p&gt;I’d like to credit the creators of &lt;a href=&quot;https://soundcloud.com/lambda-cast&quot;&gt;LambdaCast&lt;/a&gt;, whose podcasts are the basis for these series of post.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;what-is-functional-programming&quot;&gt;What is Functional Programming?&lt;/h2&gt;
+
+&lt;p&gt;Functional programming is a programming &lt;em&gt;paradigm&lt;/em&gt;, in other words, &lt;em&gt;a method or pattern for writing a computer program&lt;/em&gt;, in which computation is driven by the evaluation of mathematical functions, rather than changes in state or mutable data.&lt;/p&gt;
+
+&lt;p&gt;So, rather than creating and thinking about our applications in terms of &lt;em&gt;objects&lt;/em&gt;, or &lt;em&gt;who&lt;/em&gt; exist inside our program; &lt;em&gt;their defining features, and descript methods these objects hold within themselves&lt;/em&gt;…&lt;/p&gt;
+
+&lt;p&gt;We instead create and think about our applications in terms of &lt;em&gt;functions&lt;/em&gt;, or &lt;em&gt;how&lt;/em&gt; data is passed around our application; &lt;em&gt;what actions must be performed, and what should these actions return&lt;/em&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+An overly simplified comparison: &lt;br /&gt;
+With OOP (Object Oriented Programming) you think about what goes into a program. &lt;br /&gt;
+With FP (Functional Programming) you think about what comes out of a program.
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;what-isnt-functional-programming&quot;&gt;What isn’t Functional Programming?&lt;/h4&gt;
+
+&lt;p&gt;It’s important to note that functional programming does not require a declarative, functionally driven language.  Functional programming is a way of thinking, that although may lend itself well to declarative languages, is not a categorical explanation of those languages.  One might find that programming in an imperative language can benefit from a functional approach.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h1 id=&quot;anything-you-can-do-i-can-do-better-first-class--higher-order-functions&quot;&gt;Anything you can do, I can do better: First-Class &amp;amp; Higher Order Functions&lt;/h1&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/WO23WBji_Z0?rel=0&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;h1 id=&quot;functions-as-first-class-citizens&quot;&gt;Functions as First-Class Citizens&lt;/h1&gt;
+&lt;p&gt;In computer science, there are entities described as first-class citizens.  These entities support all the operations generally available to other entities.  These operations typically include being passed as an argument, returned from a function, modified, and assigned to a variable.  In functional languages, and in functional programming, functions are treated as first-class citizens.  So this means we can use functions in the place of other first class data (like an Integer) and our program is cool with it.&lt;/p&gt;
+
+&lt;p&gt;An example using different First-Class Citizens in Javascript:&lt;/p&gt;
+
+&lt;h1 id=&quot;higher-order-functions&quot;&gt;Higher Order Functions&lt;/h1&gt;
+&lt;p&gt;Higher Order Functions refer specifically to functions which take other functions as arguments.&lt;/p&gt;
+
+&lt;p&gt;An example in Javascript using the First-class Function and Higher Order Function concepts:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;twice&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;add3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;twice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;add3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 13  &lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;nothing-else-matters-pure-functions&quot;&gt;Nothing Else Matters: Pure Functions&lt;/h1&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/tAGnKpE4NCI?rel=0&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Pure Functions are functions that take some input/s, operate &lt;strong&gt;ONLY&lt;/strong&gt; on those inputs, and return something.&lt;/p&gt;
+
+&lt;p&gt;A pure function doesn’t need anything other than it’s arguments, &lt;strong&gt;nothing else matters&lt;/strong&gt;, and whatever it returns is something predicatable and did not modify the arguments themselves.&lt;/p&gt;
+
+&lt;p&gt;Example of a pure function in Javascript:&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Y&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The add function doesn’t care for what the X does in the rest of the program, and it doesn’t care for what the Y knows about the rest of the program, but it knows what it is supposed to do: return the two arguments added.  Anytime we pass the same inputs to this pure add function, we know it will return the same output.  This is predicatable behavior.  We also know that X didn’t change, and Y didn’t change; what was returned was something different from X and Y, and both can go on living their life unmutated.&lt;/p&gt;
+
+&lt;blockquote&gt;
+All pure functions are total functions. Total functions &lt;b&gt;ALWAYS&lt;/b&gt; return something.  The inverse of a Total function is a Partial function, a Partial function might not return something. 
+&lt;/blockquote&gt;
+
+&lt;p&gt;Pure functions are a principal concept a Functional Programming.  In Functional Programming, as much of our program as possible must be expressed using pure functions.&lt;/p&gt;
+
+&lt;hr /&gt;</content><author><name></name></author><summary type="html">This is the first in a series of post I’m writing to explore functional programming as I’m learning about it. Coming from imperative languages and object oriented programming, my hope is to wrap up some of the concepts in brief posts that other developers making the same mental leap between programming styles will find useful as quick reference material.</summary></entry><entry><title type="html">Erlang vs. Ruby: Overview</title><link href="http://localhost:4000/technical-development/erlang-vs-ruby/2017/09/22/erlang-vs-ruby-overview.html" rel="alternate" type="text/html" title="Erlang vs. Ruby: Overview" /><published>2017-09-22T14:48:09-05:00</published><updated>2017-09-22T14:48:09-05:00</updated><id>http://localhost:4000/technical-development/erlang-vs-ruby/2017/09/22/erlang-vs-ruby-overview</id><content type="html" xml:base="http://localhost:4000/technical-development/erlang-vs-ruby/2017/09/22/erlang-vs-ruby-overview.html">&lt;p&gt;I was an OOP in an OO world.  The ideological lens of object orientation, through which I looked upon the nature of reality itself was beginning to unfold for me and reveal it’s cosmic configuration. “It’s all just objects… All of it!” I revelled, as I ascended to a godlike conceptual understanding of how information is abstracted, packaged, encapsulated.&lt;/p&gt;
+
+&lt;p&gt;Then I started at 8th Light, and they said, “Go forth apprentice, and &lt;a href=&quot;http://learnyousomeerlang.com/&quot;&gt;learn you some Erlang&lt;/a&gt;.” and quickly I realized I was at most only viewing half of the grand design.&lt;/p&gt;
+
+&lt;p&gt;Welcome to the ethereal realm of Functional Programming. Now’s probably a good time for you to have an existential crisis and question everything you know because when I began to learn Erlang, I found that my object oriented headspace, was often wrong, mostly problematic, and initially ironically incongruant with Erlang in practice.&lt;/p&gt;
+
+&lt;p&gt;If you’re an OOP you might be saying, “I object!”&lt;/p&gt;
+
+&lt;p&gt;You object; we know, and in the Erlang ecosystem that’s abject and dare I say, objectionable.&lt;/p&gt;
+
+&lt;p&gt;So let’s say, like me, you’ve had to forego some type of middle ground language (Elixir) for the time being and jump straight into the deepend with the highly functional Erlang.  These post should get you started and give you a good idea of some of the major differences you’ll quickly need to understand to begin translating Ruby-isms into Er-lingo.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;blockquote&gt;
+I better make a quick public announcement before I launch into the following attempt at clarifying Erlang through Ruby concepts: These blog post represent one way of comparing and contrasting differences between Erlang and Ruby, they are by no means a guide to understanding the fundamental differences inside the languages.  We are focusing on small similarities between small bits of working code. This is not a guide to theory, this is a guide to quick implementation so that you can get up and running quicker through some pragmatic comparisons.  Try to implement these comparative strategies or find your own analogies, but understand that we are just scratching at the surface.
+&lt;/blockquote&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a href=&quot;#&quot;&gt;Erlang vs. Ruby Overview&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;../../../2017/09/22/erlang-pattern-matching-vs-ruby-conditionals.html&quot;&gt;Erlang Pattern Matching vs. Ruby Conditionals&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;../../../2017/09/22/erlang-guards-vs-ruby-ternary-operator.html&quot;&gt;Erlang Guards vs. Ruby Ternary Operator&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">I was an OOP in an OO world. The ideological lens of object orientation, through which I looked upon the nature of reality itself was beginning to unfold for me and reveal it’s cosmic configuration. “It’s all just objects… All of it!” I revelled, as I ascended to a godlike conceptual understanding of how information is abstracted, packaged, encapsulated.</summary></entry><entry><title type="html">Erlang Pattern Matching vs. Ruby Conditionals</title><link href="http://localhost:4000/technical-development/erlang-vs-ruby/2017/09/22/erlang-pattern-matching-vs-ruby-conditionals.html" rel="alternate" type="text/html" title="Erlang Pattern Matching vs. Ruby Conditionals" /><published>2017-09-22T14:48:09-05:00</published><updated>2017-09-22T14:48:09-05:00</updated><id>http://localhost:4000/technical-development/erlang-vs-ruby/2017/09/22/erlang-pattern-matching-vs-ruby-conditionals</id><content type="html" xml:base="http://localhost:4000/technical-development/erlang-vs-ruby/2017/09/22/erlang-pattern-matching-vs-ruby-conditionals.html">&lt;p&gt;Let’s begin making sense of how these two compare by looking at Ruby If/Elsif/Else Conditionals vs. Erlang Pattern Matching.&lt;/p&gt;
+
+&lt;p&gt;Follow along by forking the &lt;a href=&quot;https://github.com/scottyplunkett/erlang-vs-ruby&quot;&gt;example code&lt;/a&gt; or copy and paste from the below.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;using-if-in-ruby&quot;&gt;Using If in Ruby:&lt;/h1&gt;
+
+&lt;p&gt;Let’s say you’re a Drill Instructor with a group of recruits that are standing in formation awaiting inspection.  When you step in front of a recruit, you inspect their uniform and offer them encouragement depending on the condition of their uniform.&lt;/p&gt;
+
+&lt;p&gt;In ruby you might create a Drill Instructor class object and give it a method that uses an if, elsif, else conditional statement:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DrillInstructor&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;give_recruit_encouragement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;uniform_rating&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;uniform_rating&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+     &lt;span class=&quot;s2&quot;&gt;&quot;Good to go recruit.&quot;&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;elsif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;uniform_rating&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+     &lt;span class=&quot;s2&quot;&gt;&quot;Nasty recruit.&quot;&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; 
+     &lt;span class=&quot;s2&quot;&gt;&quot;Heinous recruit! Go get on my quarterdeck!&quot;&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Let’s try to parse the code above into it’s definitive pieces so that we can better understand what makes it function. Perhaps we can avoid getting lost in translation later, when we have to think in Erlang, by applying a functional understanding of our Ruby code.&lt;/p&gt;
+
+&lt;p&gt;Here are the pieces:&lt;/p&gt;
+
+&lt;ol&gt;
+
+&lt;li&gt;
+&lt;b&gt;Class&lt;/b&gt;
+
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DrillInstructor&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+when instantiated creates an Object,
+that holds the behavior we gave it through our method declaration
+ex. drill_instructor = DrillInstructor.new
+&lt;/blockquote&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;b&gt;Method&lt;/b&gt;
+
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;give_recruit_encouragement&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+we declared our method with the def keyword 
+and gave it a name so that we can 
+call this functionality by name on our object
+ex. drill_instructor.give_recruit_encouragement
+&lt;/blockquote&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;b&gt;Parameter&lt;/b&gt;
+
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;uniform_rating&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+we abstractly describe the values that we expect
+to be passed into our method through parameters
+rather than describing the values themselves, 
+when called, this abstraction is replaced 
+by an actual value
+ex. drill_instructor.give_recruit_encouragement(1)
+&lt;/blockquote&gt;
+&lt;/li&gt;
+
+
+&lt;li&gt;
+&lt;b&gt;Conditional Statement&lt;/b&gt;
+
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;uniform_rating&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+here we start our conditional, and begin to encode expecations (1)
+&lt;/blockquote&gt;
+
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;b&gt;Expression&lt;/b&gt;
+
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Good to go recruit.&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+this where we give our code to something to evaluate, or what should 
+happen (printing a string of encouragement) if the expected value (1)
+is encountered
+(although it has no explicit return statement because we don't 
+always need one in Ruby what we're really saying is return the string 
+&quot;Good to go recruit.&quot;)
+&lt;/blockquote&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;b&gt;Conditional Statement&lt;/b&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;elsif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;uniform_rating&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+if our uniform_rating made it passed the first statement, here's t
+he second most likely expected value 
+&lt;/blockquote&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;b&gt;Expression&lt;/b&gt;
+
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Nasty recruit.&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+when our method is given the expected value of (2) 
+evaluate the expression: return the string &quot;Nasty recruit&quot;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;b&gt;Conditional Statement&lt;/b&gt;
+
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+here we are saying it's possible we'll have something that doesn't 
+meet our expectations, and there's a need to do something other 
+than what we did when a 1 or a 2 is passed into our method
+this third possible value could be 
+something like our other expectations (3), 
+or it could be something totally different (&quot;foobar&quot;)
+&lt;/blockquote&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;b&gt;Expression&lt;/b&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Heinous recruit! Go get on my quarterdeck!&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+in any case we don't get a 1 or 2 
+value as our uniform_rating parameter
+evaluate the expression: return the string 
+&quot;Heinous recruit! Go get on my quarterdeck!&quot;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;That was exhaustive. Thinking functionally will feel that way at first.&lt;/p&gt;
+
+&lt;p&gt;You may have heard some version of the axiom: “In Ruby, everything is technically an object.” This is one of those simplifications that I encountered early on when learning to code, that was totally helpful in understanding how to think Object Oriented; unfortunately, &lt;a href=&quot;http://rubylearning.com/blog/2010/09/27/almost-everything-is-an-object-and-everything-is-almost-an-object/&quot;&gt;it’s also a lie&lt;/a&gt; and in the truth lies a useful concept for those going from Ruby to Erlang:&lt;/p&gt;
+
+&lt;p&gt;Not everything in Ruby is an object, but everything in Ruby evaluates to an object.&lt;/p&gt;
+
+&lt;p&gt;This is similar to the way that in functional languages, everything returns something.&lt;/p&gt;
+
+&lt;p&gt;Now, Erlang does have an ‘If’ but it doesn’t work like the If conditionals of object oriented languages, so let’s pretend the Erlang ‘If’ doesn’t exist for a moment.&lt;/p&gt;
+
+&lt;p&gt;I found that translating something like the Ruby code above into Erlang, is aided by an understanding of pattern matching.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;using-pattern-matching-in-erlang&quot;&gt;Using Pattern Matching in Erlang:&lt;/h1&gt;
+
+&lt;p&gt;I think of pattern matching as a means to communicate how we’d like our program to behave in the various states we expect it to encounter when executing.&lt;/p&gt;
+
+&lt;ul&gt;
+We do this through explicit declaration of:
+	&lt;li&gt;The different arguments we expect will be passed to a function.&lt;/li&gt;
+	&lt;li&gt;The expression/s to be evaluated if an expected argument is encountered.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In Erlang we might use pattern matching inside a drill_instructor module to write the above like so:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-erlang&quot; data-lang=&quot;erlang&quot;&gt;&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ni&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;drill_instructor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ni&quot;&gt;export&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;give_recruit_encouragement&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]).&lt;/span&gt;
+
+&lt;span class=&quot;nf&quot;&gt;give_recruit_encouragement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Good to go recruit.&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;~n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;give_recruit_encouragement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Nasty recruit.&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;~n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;give_recruit_encouragement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(_)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Heinous recruit! Go get on my quarterdeck!&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;~n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Let’s use the parts from our Ruby code to see how we might arrive at the above code.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The Ruby class: Drill Instructor, becomes the Erlang module: drill_instructor
+    In Ruby our class stored our behaviors
+    In Erlang a module stores functions 
+        NOTE: A module must have the same name as the file that holds its definition 
+        -module(drill_instructor). =&amp;gt; must be at the top of a file named drill_instructor.erl&lt;/li&gt;
+  &lt;li&gt;The Ruby method: give_recruit_encouragement, becomes the Erlang function: give_recruit_encouragement&lt;/li&gt;
+  &lt;li&gt;The Ruby parameter: uniform_rating, becomes the 1 in the Erlang export declaration&lt;/li&gt;
+  &lt;li&gt;The Ruby conditional statement: if uniform_rating == 1, becomes the Erlang function head: give_recruit_encouragement(1) -&amp;gt;&lt;/li&gt;
+  &lt;li&gt;The Ruby expression: “Good to go recruit.”, becomes the Erlang expression: io:format(“Good to go recruit.~n”);&lt;/li&gt;
+  &lt;li&gt;The Ruby conditional statement:  elsif uniform_rating == 2, becomes the Erlang function head: give_recruit_encouragement(2) -&amp;gt;&lt;/li&gt;
+  &lt;li&gt;The Ruby expression: “Nasty recruit.”, becomes the Erlang expression: io:format(“Nasty recruit.~n”);&lt;/li&gt;
+  &lt;li&gt;The Ruby conditional statement: else, becomes the Erlang function head: give_recruit_encouragement(_);&lt;/li&gt;
+  &lt;li&gt;The Ruby expression: “Heinous recruit! Go get on my quarterdeck!”, becomes the Erlang expression: io:format(“Heinous recruit! Go get on my quarterdeck!~n”).&lt;/li&gt;
+&lt;/ol&gt;</content><author><name></name></author><summary type="html">Let’s begin making sense of how these two compare by looking at Ruby If/Elsif/Else Conditionals vs. Erlang Pattern Matching.</summary></entry><entry><title type="html">Erlang Guards vs. Ruby Ternary Operator</title><link href="http://localhost:4000/technical-development/erlang-vs-ruby/2017/09/22/erlang-guards-vs-ruby-ternary-operator.html" rel="alternate" type="text/html" title="Erlang Guards vs. Ruby Ternary Operator" /><published>2017-09-22T14:48:09-05:00</published><updated>2017-09-22T14:48:09-05:00</updated><id>http://localhost:4000/technical-development/erlang-vs-ruby/2017/09/22/erlang-guards-vs-ruby-ternary-operator</id><content type="html" xml:base="http://localhost:4000/technical-development/erlang-vs-ruby/2017/09/22/erlang-guards-vs-ruby-ternary-operator.html">&lt;p&gt;Follow along by forking the &lt;a href=&quot;https://github.com/scottyplunkett/erlang-vs-ruby&quot;&gt;example code&lt;/a&gt; or copy and paste from the below.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;using-a-ternary-operator-in-ruby&quot;&gt;Using A Ternary Operator in Ruby:&lt;/h1&gt;
+
+&lt;p&gt;Let’s say it’s 2007 Iraq and you’re an 18 year old Marine standing post, protecting 30 lives and millions of dollars worth of government property.  18 year olds, trained or not, still have adolescent minds, so it’s important that if we’re going to have them guarding the base, we’d better have given them a really simple procedure for dealing with threats.&lt;/p&gt;
+
+&lt;p&gt;In ruby one really simple and succinct way to encapsulate the Marine on post and a simple procedure for dealing with an oncoming threat would be through creation of a GruntOnPost class object with a react_to_threat method that the infantryman can use when trying to quickly determine if they should engage potential threats or not.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;GruntOnPost&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;react_to_threat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;threat_distance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;threat_distance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Mozambique Drill.&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Stay Frosty.&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Pretty succinct, right?  That’s because we used the ternary operator.&lt;/p&gt;
+
+&lt;p&gt;Now if you’re wondering what a ‘&lt;a href=&quot;https://en.wikipedia.org/wiki/Mozambique_Drill&quot;&gt;Mozambique Drill&lt;/a&gt;,’ is: 
+It’s a drill that Marines use to convince folks who want to do harm that instead they should take a nap on the floor forever.&lt;br /&gt;
+More importantly, in the above code it represents what happens when the threat is within a distance value of 25; 
+and conversely, ‘Stay Frosty,’ represents what happens if a threat is not inside 25.&lt;/p&gt;
+
+&lt;p&gt;What’s interesting about this, is the ternary operator looks at a binary condition (a condition that is always either true or false), and then &lt;strong&gt;always&lt;/strong&gt; returns something based on said condition.&lt;/p&gt;
+
+&lt;p&gt;Wait, ternary operations &lt;strong&gt;always&lt;/strong&gt; returns something?&lt;br /&gt;
+How functional of you Ruby!&lt;/p&gt;
+
+&lt;p&gt;It makes sense then to look at our expression as an opportunity to declaratively express a base case for when &lt;strong&gt;guarding&lt;/strong&gt; the post is most urgent… which is almost exactly how we write &amp;amp; think about guards in Erlang.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;using-the-erlang-guard&quot;&gt;Using the Erlang Guard&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-erlang&quot; data-lang=&quot;erlang&quot;&gt;&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ni&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;grunt_on_guard&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;ni&quot;&gt;export&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;react_to_threat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]).&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;react_to_threat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Threat_Distance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;when&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;Threat_Distance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Mozambique Drill!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;react_to_threat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(_)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Stay Frosty.&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Just like in our Ruby code with the Ternary, using Guards in Erlang, there are two potential situations (binary condition), the guard &lt;code class=&quot;highlighter-rouge&quot;&gt;when Threat_Distance &amp;lt;= 25&lt;/code&gt; evaluates to false or it evaluates to true, and we tell our Grunt to behave differently in scenarios when the guard clause evaluates to true.&lt;/p&gt;
+
+&lt;p&gt;In case my 10,000lb. analogy didn’t hit you yet: Like Marines standing post, Guards maintain situational (state) awareness and allow the program to be evaluated only when their statement evaluates true.&lt;/p&gt;
+
+&lt;p&gt;Erlang Guards = Naps&lt;/p&gt;</content><author><name></name></author><summary type="html">Follow along by forking the example code or copy and paste from the below.</summary></entry><entry><title type="html">Getting on Track: WindyCity Rails Presentations and Presenters that Reaffirmed My Choice to Pursue the Craft</title><link href="http://localhost:4000/professional-development/windycity-rails/2017/09/18/getting-on-track.html" rel="alternate" type="text/html" title="Getting on Track: WindyCity Rails Presentations and Presenters that Reaffirmed My Choice to Pursue the Craft" /><published>2017-09-18T14:48:09-05:00</published><updated>2017-09-18T14:48:09-05:00</updated><id>http://localhost:4000/professional-development/windycity-rails/2017/09/18/getting-on-track</id><content type="html" xml:base="http://localhost:4000/professional-development/windycity-rails/2017/09/18/getting-on-track.html">&lt;p&gt;Last monday was my first day as a resident apprentice at 8th Light.  I was fortunate to have started the same week as WindyCity Rails, a conference produced by 8th Light and ChicagoRuby.  I was able to attend and help with the set-up and day-to-day operation during the conference, which was exciting in its own right because it was my first software ‘developer’ conference, and Rails is the framework I’ve spent the most time in; having graduated this past May from Code Platoon, a non-profit coding bootcamp for veterans here in Chicago. Rails is a core component of the curriculuum.&lt;/p&gt;
+
+&lt;p&gt;For me, it was a happy surprise to find that the speakers were not limited to discussing the Rails framework; in fact the presentations I connected most with, had scope, relevancy, and application at least industry-wide.  In this series I’ll highlight 3 presentations that consumed me as I consumed them, and explain why they each helped re-affirm my choice and strengthen my resolve to become a hard-nosed crafter of software in a community of professionals.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;The Hitchhiker’s Guide to Machine Learning
+Randall Thomas, Thunderbolt Labs&lt;/p&gt;
+
+    &lt;p&gt;I’ve recently developed a small obsession with Machine Learning. During the lightning talk portion of my 8th Light interview I chose to show off a small application I hacked together that when run would cause my MacBook to ‘magically’ begin describing aloud labels it assigned to real-world objects placed in front of the computer. This magic was smoke and mirrors: A creative but simple Ruby program, using backticks to send system commands that made my Mac snap a secret photo, and speak aloud what was in the photo.  It labeled the objects by parsing a JSON response it received back after sending the photo to the Google Cloud Vision API. Simple, right? 
+Perhaps, if you don’t count the massive amount of hidden complexity where enigmatic Machine Learning algorithms that were trained on unfahtomable swaths of image data from which a highly complex model formed enabling an animal like ability to ‘see’ and identify objects.&lt;/p&gt;
+
+    &lt;p&gt;In Randall’s presentation he illuminated and reinforced this complexity, cartographing his recommendation for a rigorous path by which one may begin to actually understand how we teach computers to learn. What I liked most about this presentation was that he didn’t speak of how challenging the ML path to understanding was in an attempt to scare-off interested but naive application builders like myself, quite the opposite he urged us toward the challenge. Randall poignantly described through historical example, the dangers of runaway technology in the hands of malicious or uninformed actors, and why decent people ought not be timid, and instead be vigilant. Somehow he did all of that and still managed to throw in some solid zingers… I recall at least one tasteful F-bomb.&lt;/p&gt;
+
+    &lt;p&gt;An hour or so after he left the stage I found him getting mic’d up for an interview and quickly introduced myself and thanked him for his talk. “Nice meatball!” He said pointing at my NASA hat. I feel like a peon in this industry so when brilliant well known people are approachable and genuinely nice to me it really makes me believe in the future of empathy in the software community. I asked him, “So, I’m curious, why didn’t you mention Tensorflow or the Google Cloud Machine Learning APIs?” I’m paraphrasing but he reconfirmed that even though one could devise practical applications and make an attempt at using tools like I had during my aforementioned lightning talk, they wouldn’t be empowered to effectively weild, manipulate, or refine the math that is the basis for any machine learning system. “Plus,” he said, “…you might spend 9 months learning Tensorflow versus actually learning the foundational components of machine learning which would get you up and running with Tensorflow quickly anyway.” I thanked him for the advice and he explained how to reach out if I had any other questions.&lt;/p&gt;
+
+    &lt;p&gt;He probably saved me months on what would’ve been a less than fruitful pursuit of a single ML framework, additionally having a non-judgmental interaction like that with a veteran engineer makes me want to in turn pay kindness forward and indeed stay grounded as I lurch toward a familiariaty with convulluted topics and comfortability with complex systems.  This thoughtful approach to colleagues, regardless of which rung they sit on the ladder to mastery, is in part how we might rise the tide and lift all the boats, creating a community of professionals.&lt;/p&gt;
+
+    &lt;p&gt;Check out Randall’s ML Recommendations &amp;amp; Resources:
+https://gist.github.com/daksis/a00816eb5149920b266b3758e3823542&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name></name></author><summary type="html">Last monday was my first day as a resident apprentice at 8th Light. I was fortunate to have started the same week as WindyCity Rails, a conference produced by 8th Light and ChicagoRuby. I was able to attend and help with the set-up and day-to-day operation during the conference, which was exciting in its own right because it was my first software ‘developer’ conference, and Rails is the framework I’ve spent the most time in; having graduated this past May from Code Platoon, a non-profit coding bootcamp for veterans here in Chicago. Rails is a core component of the curriculuum.</summary></entry></feed>
