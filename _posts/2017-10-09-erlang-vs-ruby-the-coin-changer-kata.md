@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 'Erlang vs. Ruby: The Coin Changer Kata'
+categories: technical-development erlang-vs-ruby
 ---
 
 I spent a lot of time over the past 2 weeks doing the Coin Changer Kata.  In the following post I'll discuss my approach to this Kata in both Ruby and Erlang.
