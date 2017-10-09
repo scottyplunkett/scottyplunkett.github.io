@@ -37,9 +37,6 @@ It's important to note that functional programming does not require a declarativ
 # Functions as First-Class Citizens
 In computer science, there are entities described as first-class citizens.  These entities support all the operations generally available to other entities.  These operations typically include being passed as an argument, returned from a function, modified, and assigned to a variable.  In functional languages, and in functional programming, functions are treated as first-class citizens.  So this means we can use functions in the place of other first class data (like an Integer) and our program is cool with it.
 
-An example using different First-Class Citizens in Javascript:
-
-
 # Higher Order Functions
 Higher Order Functions refer specifically to functions which take other functions as arguments.
 
