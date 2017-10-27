@@ -8,7 +8,7 @@ category: technical-development types
 
   I thought it might be a good idea to familiarize myself with these stranger types.  So sit back, shave your head, and let's turn the geekery up to integer 11!
 
-  <img src="http://i.imgur.com/G8c4eXx.jpg" alt="turn it up to 11!"/>
+  <img src="https://memegenerator.net/img/instances/250x250/70640680/dont-be-a-10-be-an-eleven.jpg" alt="turn it up to 11!"/>
 
 # Check your type before your wreck type
 
