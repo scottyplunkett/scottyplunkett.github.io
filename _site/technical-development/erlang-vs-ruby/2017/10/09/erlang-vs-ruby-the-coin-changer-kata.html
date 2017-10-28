@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Erlang vs. Ruby: The Coin Changer Kata</title>
+  <meta name="description" content="I spent a lot of time over the past 2 weeks doing the Coin Changer Kata. In the following post I’ll discuss my approach to this Kata in both Ruby and Erlang.">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="http://localhost:4000/technical-development/erlang-vs-ruby/2017/10/09/erlang-vs-ruby-the-coin-changer-kata.html">
+  <link rel="alternate" type="application/rss+xml" title="Craftwork" href="/feed.xml">
+  
+  
+</head>
+
+
+  <body>
+
+    <header class="site-header" role="banner">
+
+  <div class="wrapper">
+    
+    
+    <a class="site-title" href="/">Craftwork</a>
+  
+    
+      <nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+          
+            
+            
+          
+            
+            
+            <a class="page-link" href="/about/">About</a>
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+        </div>
+      </nav>
+    
+  </div>
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Erlang vs. Ruby: The Coin Changer Kata</h1>
+    <p class="post-meta">
+      <time datetime="2017-10-09T00:00:00-05:00" itemprop="datePublished">
+        
+        Oct 9, 2017
+      </time>
+      </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>I spent a lot of time over the past 2 weeks doing the Coin Changer Kata.  In the following post I’ll discuss my approach to this Kata in both Ruby and Erlang.</p>
+
+<p>As craftsmen we use Katas to showcase and practice the ability to attain a <em>flow</em> while coding a program.  The term Kata is borrowed from Martial Arts-</p>
+
+<p><em>From WikiPedia:</em>
+Kata (型 or 形 literally: “form”), a Japanese word, are detailed choreographed patterns of movements practiced either solo or in pairs.</p>
+
+<hr />
+
+<p>Ruby:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4TEiV8sqikA?rel=0" frameborder="0" allowfullscreen=""></iframe>
+
+<p>The above video is from the apprenticeship of Chris Peak, a designer at 8th Light.  The way I do the Coin Changer in Ruby uses a similar approach.</p>
+
+<p>Tackling the Coin Changer problem through a Kata, gives us the opportunity to see how complexity is driven through simple advances in our test, and follows simple changes in code to meet the increasing complexity of a problem.  This is illustrated best in the move between our code making change for 1-4 cents and our code making change for 5-6 cents.</p>
+
+<p>This upswing in complexity is due to the fact that prior to needing change for 5 or 6 cents, we really only require pennies, and our code thus takes the form of a pattern match.</p>
+<blockquote>
+In pattern matching all we need to do is simply declare our expectations in the form of conditional statements, and then explicitly state expressions or values to return upon those conditional statements evaluating to true.  Pattern matching will help us when we write the Kata in Erlang, so take note of that definition.     
+</blockquote>
+<p>Once we ask, through our test, for our code to return a 5 or a nickel and a penny once a value greater than 5 is passed to our method, we have to change our strategy.  We get into imperative coding because we can not explicitly state what we need our code to do.</p>
+
+<p>It’s interesting to note, that the increasing complexity of the problem is not necessarily a sign that we need to increase the complexity of our code, in fact our code at the end is less lines and seemingly more simple than it is when we our only dealing in pennies.</p>
+
+<p>Here’s my Ruby Code at the end of the coin changer Kata:</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'rspec'</span>
+
+<span class="no">Penny</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="no">Nickel</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="no">Dime</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="no">Quarter</span> <span class="o">=</span> <span class="mi">25</span>
+
+<span class="k">def</span> <span class="nf">make_change</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
+	<span class="n">coins</span> <span class="o">=</span> <span class="p">[</span><span class="no">Quarter</span><span class="p">,</span> <span class="no">Dime</span><span class="p">,</span> <span class="no">Nickel</span><span class="p">,</span> <span class="no">Penny</span><span class="p">]</span>
+	<span class="n">change</span> <span class="o">=</span> <span class="p">[]</span>
+	<span class="n">coins</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">coin</span><span class="o">|</span>
+		<span class="k">while</span> <span class="n">amount</span> <span class="o">&gt;=</span> <span class="n">coin</span> 
+			<span class="n">change</span> <span class="o">&lt;&lt;</span> <span class="n">coin</span>
+			<span class="n">amount</span> <span class="o">-=</span> <span class="n">coin</span>
+		<span class="k">end</span>
+	<span class="k">end</span>
+	<span class="n">change</span>
+<span class="k">end</span>
+
+<span class="n">describe</span> <span class="s1">'make change'</span> <span class="k">do</span> 
+	<span class="n">it</span> <span class="s1">'makes change for 1 cent'</span> <span class="k">do</span> 
+		<span class="n">expect</span><span class="p">(</span><span class="n">make_change</span><span class="p">(</span><span class="mi">1</span><span class="p">)).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+	<span class="k">end</span>
+	<span class="n">it</span> <span class="s1">'makes change for 2 cent'</span> <span class="k">do</span> 
+		<span class="n">expect</span><span class="p">(</span><span class="n">make_change</span><span class="p">(</span><span class="mi">2</span><span class="p">)).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+	<span class="k">end</span>
+	<span class="n">it</span> <span class="s1">'makes change for 3 cent'</span> <span class="k">do</span> 
+		<span class="n">expect</span><span class="p">(</span><span class="n">make_change</span><span class="p">(</span><span class="mi">3</span><span class="p">)).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+	<span class="k">end</span>
+	<span class="n">it</span> <span class="s1">'makes change for 4 cent'</span> <span class="k">do</span> 
+		<span class="n">expect</span><span class="p">(</span><span class="n">make_change</span><span class="p">(</span><span class="mi">4</span><span class="p">)).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+	<span class="k">end</span>
+	<span class="n">it</span> <span class="s1">'makes change for 5 cent'</span> <span class="k">do</span> 
+		<span class="n">expect</span><span class="p">(</span><span class="n">make_change</span><span class="p">(</span><span class="mi">5</span><span class="p">)).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">([</span><span class="mi">5</span><span class="p">])</span>
+	<span class="k">end</span>
+	<span class="n">it</span> <span class="s1">'makes change for 6 cent'</span> <span class="k">do</span> 
+		<span class="n">expect</span><span class="p">(</span><span class="n">make_change</span><span class="p">(</span><span class="mi">6</span><span class="p">)).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+	<span class="k">end</span>
+	<span class="n">it</span> <span class="s1">'makes change for 8 cent'</span> <span class="k">do</span> 
+		<span class="n">expect</span><span class="p">(</span><span class="n">make_change</span><span class="p">(</span><span class="mi">8</span><span class="p">)).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+	<span class="k">end</span>
+	<span class="n">it</span> <span class="s1">'makes change for 10 cent'</span> <span class="k">do</span> 
+		<span class="n">expect</span><span class="p">(</span><span class="n">make_change</span><span class="p">(</span><span class="mi">10</span><span class="p">)).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">([</span><span class="mi">10</span><span class="p">])</span>
+	<span class="k">end</span>
+	<span class="n">it</span> <span class="s1">'makes change for 14 cent'</span> <span class="k">do</span> 
+		<span class="n">expect</span><span class="p">(</span><span class="n">make_change</span><span class="p">(</span><span class="mi">14</span><span class="p">)).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+	<span class="k">end</span>
+	<span class="n">it</span> <span class="s1">'makes change for 15 cent'</span> <span class="k">do</span> 
+		<span class="n">expect</span><span class="p">(</span><span class="n">make_change</span><span class="p">(</span><span class="mi">15</span><span class="p">)).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+	<span class="k">end</span>
+	<span class="n">it</span> <span class="s1">'makes change for 18 cent'</span> <span class="k">do</span> 
+		<span class="n">expect</span><span class="p">(</span><span class="n">make_change</span><span class="p">(</span><span class="mi">18</span><span class="p">)).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+	<span class="k">end</span>
+	<span class="n">it</span> <span class="s1">'makes change for 20 cent'</span> <span class="k">do</span> 
+		<span class="n">expect</span><span class="p">(</span><span class="n">make_change</span><span class="p">(</span><span class="mi">20</span><span class="p">)).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
+	<span class="k">end</span>
+	<span class="n">it</span> <span class="s1">'makes change for 23 cent'</span> <span class="k">do</span> 
+		<span class="n">expect</span><span class="p">(</span><span class="n">make_change</span><span class="p">(</span><span class="mi">23</span><span class="p">)).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+	<span class="k">end</span>
+	<span class="n">it</span> <span class="s1">'makes change for 25 cent'</span> <span class="k">do</span> 
+		<span class="n">expect</span><span class="p">(</span><span class="n">make_change</span><span class="p">(</span><span class="mi">25</span><span class="p">)).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">([</span><span class="mi">25</span><span class="p">])</span>
+	<span class="k">end</span>
+	<span class="n">it</span> <span class="s1">'makes change for 88 cent'</span> <span class="k">do</span> 
+		<span class="n">expect</span><span class="p">(</span><span class="n">make_change</span><span class="p">(</span><span class="mi">88</span><span class="p">)).</span><span class="nf">to</span> <span class="n">eq</span><span class="p">([</span><span class="mi">25</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+	<span class="k">end</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<p>Erlang:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dNllpVZt_Ks?rel=0" frameborder="0" allowfullscreen=""></iframe>
+
+<p>The above video is my screencast of the Coin Changer Kata in Erlang in real time.</p>
+
+<p>I found it more challenging to make simple changes in code to meet the increasing complexity of the problem when tackling the Kata in Erlang.  This is in part due to the fact that in Erlang we have to use tail recursion.</p>
+
+<p>I was familiar with the concept of recursion prior to the Kata… In recursion we call a method on itself.  Tail recursion is a specific recursive process in which we call a function on the head element in a list and then call the function again on the rest of the elements in a list repeatedly until a base case is meant.</p>
+
+<p>Here is my Erlang code at the end of the coin changer Kata:</p>
+
+<div class="language-erlang highlighter-rouge"><pre class="highlight"><code><span class="p">-</span><span class="ni">module</span><span class="p">(</span><span class="n">coin_changer</span><span class="p">).</span>
+<span class="p">-</span><span class="ni">include_lib</span><span class="p">(</span><span class="s">"eunit/include/eunit.hrl"</span><span class="p">).</span>
+<span class="p">-</span><span class="ni">export</span><span class="p">([</span><span class="n">make_change</span><span class="o">/</span><span class="mi">1</span><span class="p">,</span><span class="n">make_change</span><span class="o">/</span><span class="mi">3</span><span class="p">]).</span>
+
+<span class="nf">make_change</span><span class="p">(</span><span class="nv">Amount</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nf">make_change</span><span class="p">(</span><span class="nv">Amount</span><span class="p">,[</span><span class="mi">25</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">],[]).</span>
+<span class="nf">make_change</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">_,</span> <span class="nv">Change</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nv">Change</span><span class="p">;</span>
+<span class="nf">make_change</span><span class="p">(</span><span class="nv">Amount</span><span class="p">,</span> <span class="p">[</span><span class="nv">HighValue</span> <span class="p">|</span> <span class="nv">Coins</span><span class="p">],</span> <span class="nv">Change</span><span class="p">)</span> <span class="k">when</span> <span class="nv">Amount</span> <span class="o">&gt;=</span> <span class="nv">HighValue</span> <span class="o">-&gt;</span> <span class="nf">make_change</span><span class="p">(</span><span class="nv">Amount</span><span class="o">-</span><span class="nv">HighValue</span><span class="p">,</span> <span class="p">[</span><span class="nv">HighValue</span><span class="p">]</span> <span class="o">++</span> <span class="nv">Coins</span><span class="p">,</span> <span class="nv">Change</span> <span class="o">++</span> <span class="p">[</span><span class="nv">HighValue</span><span class="p">]);</span>
+<span class="nf">make_change</span><span class="p">(</span><span class="nv">Amount</span><span class="p">,</span> <span class="p">[_</span> <span class="p">|</span> <span class="nv">Coins</span><span class="p">],</span> <span class="nv">Change</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nf">make_change</span><span class="p">(</span><span class="nv">Amount</span><span class="p">,</span> <span class="nv">Coins</span><span class="p">,</span> <span class="nv">Change</span><span class="p">).</span>
+
+<span class="nf">coin_changer_test_</span><span class="p">()</span> <span class="o">-&gt;</span>
+	<span class="p">[</span>
+	<span class="o">?</span><span class="p">_</span><span class="nf">assert</span><span class="p">(</span><span class="nf">make_change</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="o">=:=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]),</span> 
+	<span class="o">?</span><span class="p">_</span><span class="nf">assert</span><span class="p">(</span><span class="nf">make_change</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="o">=:=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span>
+	<span class="o">?</span><span class="p">_</span><span class="nf">assert</span><span class="p">(</span><span class="nf">make_change</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="o">=:=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span>
+	<span class="o">?</span><span class="p">_</span><span class="nf">assert</span><span class="p">(</span><span class="nf">make_change</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>  <span class="o">=:=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span>
+	<span class="o">?</span><span class="p">_</span><span class="nf">assert</span><span class="p">(</span><span class="nf">make_change</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>  <span class="o">=:=</span> <span class="p">[</span><span class="mi">5</span><span class="p">]),</span>
+	<span class="o">?</span><span class="p">_</span><span class="nf">assert</span><span class="p">(</span><span class="nf">make_change</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>  <span class="o">=:=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span>
+	<span class="o">?</span><span class="p">_</span><span class="nf">assert</span><span class="p">(</span><span class="nf">make_change</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>  <span class="o">=:=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span>
+	<span class="o">?</span><span class="p">_</span><span class="nf">assert</span><span class="p">(</span><span class="nf">make_change</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>  <span class="o">=:=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span>
+	<span class="o">?</span><span class="p">_</span><span class="nf">assert</span><span class="p">(</span><span class="nf">make_change</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>  <span class="o">=:=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span>
+	<span class="o">?</span><span class="p">_</span><span class="nf">assert</span><span class="p">(</span><span class="nf">make_change</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">=:=</span> <span class="p">[</span><span class="mi">10</span><span class="p">]),</span>
+	<span class="o">?</span><span class="p">_</span><span class="nf">assert</span><span class="p">(</span><span class="nf">make_change</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span> <span class="o">=:=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span>
+	<span class="o">?</span><span class="p">_</span><span class="nf">assert</span><span class="p">(</span><span class="nf">make_change</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="o">=:=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">]),</span>
+	<span class="o">?</span><span class="p">_</span><span class="nf">assert</span><span class="p">(</span><span class="nf">make_change</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span> <span class="o">=:=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span>
+	<span class="o">?</span><span class="p">_</span><span class="nf">assert</span><span class="p">(</span><span class="nf">make_change</span><span class="p">(</span><span class="mi">18</span><span class="p">)</span> <span class="o">=:=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span>
+	<span class="o">?</span><span class="p">_</span><span class="nf">assert</span><span class="p">(</span><span class="nf">make_change</span><span class="p">(</span><span class="mi">23</span><span class="p">)</span> <span class="o">=:=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span>
+	<span class="o">?</span><span class="p">_</span><span class="nf">assert</span><span class="p">(</span><span class="nf">make_change</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span> <span class="o">=:=</span> <span class="p">[</span><span class="mi">25</span><span class="p">]),</span>
+	<span class="o">?</span><span class="p">_</span><span class="nf">assert</span><span class="p">(</span><span class="nf">make_change</span><span class="p">(</span><span class="mi">75</span><span class="p">)</span> <span class="o">=:=</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">25</span><span class="p">]),</span>
+	<span class="o">?</span><span class="p">_</span><span class="nf">assert</span><span class="p">(</span><span class="nf">make_change</span><span class="p">(</span><span class="mi">88</span><span class="p">)</span> <span class="o">=:=</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span>
+	<span class="o">?</span><span class="p">_</span><span class="nf">assert</span><span class="p">(</span><span class="nf">make_change</span><span class="p">(</span><span class="mi">94</span><span class="p">)</span> <span class="o">=:=</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span>
+	<span class="o">?</span><span class="p">_</span><span class="nf">assert</span><span class="p">(</span><span class="nf">make_change</span><span class="p">(</span><span class="mi">99</span><span class="p">)</span> <span class="o">=:=</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+	<span class="p">].</span>
+</code></pre>
+</div>
+
+
+  </div>
+
+  
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Craftwork</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>
+            
+              Craftwork
+            
+            </li>
+            
+            <li><a href="mailto:splunkett@8thLight.com">splunkett@8thLight.com</a></li>
+            
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/scottyplunkett"><span class="icon icon--github"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">scottyplunkett</span></a>
+
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>This blog documents and explores one apprentice software crafter&#39;s history, headspace, and lessons learned, whilst traveling along the unending path toward technical expertise and professional mastery.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

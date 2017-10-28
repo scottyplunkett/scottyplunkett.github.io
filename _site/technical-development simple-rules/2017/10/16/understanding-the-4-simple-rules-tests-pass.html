@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Craftwork</title>
-  <meta name="description" content="This blog documents and explores one apprentice software crafter&#39;s history, headspace, and lessons learned, whilst traveling along the unending path toward t...">
+  <title>Understanding the 4 Simple Rules: Tests Pass</title>
+  <meta name="description" content="Overview">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/">
+  <link rel="canonical" href="http://localhost:4000/technical-development%20simple-rules/2017/10/16/understanding-the-4-simple-rules-tests-pass.html">
   <link rel="alternate" type="application/rss+xml" title="Craftwork" href="/feed.xml">
   
   
@@ -67,110 +67,51 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <div class="home">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <h1 class="page-heading">Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Understanding the 4 Simple Rules: Tests Pass</h1>
+    <p class="post-meta">
+      <time datetime="2017-10-16T00:00:00-05:00" itemprop="datePublished">
+        
+        Oct 16, 2017
+      </time>
+      </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <h1 id="overview">Overview</h1>
+
+<p>This week I was assigned the reading, <em>Understanding The 4 Rules of Simple Design</em> by, Corey Haines.  The following series of post are my thoughts on each of the rules and some notes on how Corey helps us understand them.</p>
+
+<h1 id="tests-pass">Tests Pass</h1>
+
+<p>This past week I had begun to actually code out TicTacToe in Erlang.  I had a lot of questions on testing.</p>
+
+<p><em>How do I test console output?</em>
+<em>Do I test console output?</em>
+<em>Why aren’t my test better?</em>
+<em>Why am I so confused?</em></p>
+
+<p>But the one question I should have asked was-</p>
+
+<p><em>Do my test pass?</em></p>
+
+<p>I embarrassingly forgot that I had updated some of my code inbetween commits and my IPM (iteration planning meeting).  My mentors chuckled because it was a pretty amateur mistake to make.  Overall they weren’t totally disappointed with the IPM but one of the main notes was that I should clearly have all test passing before a pull request and definitely during any demo.</p>
+
+<h1 id="why-is-this-important">Why is this important</h1>
+
+<ol>
+  <li>As crafters, we want to know our code works.  Passing tests tell us that our code is working.</li>
+  <li>As consultants, we look for ways to please our clients and give them peace of mind that what we are building for them can be proven to work.  Passing tests tell our clients that we are building a strong product and moving ahead only when code works.</li>
+  <li>Passing tests prove we understand our application.</li>
+  <li>Passing tests tell us we can move onto writing more test and thus, writing more code.</li>
+</ol>
+
+  </div>
+
   
-  
-
-
-  <ul class="post-list">
-    
-      <li>
-        
-        <span class="post-meta">Oct 27, 2017</span>
-
-        <h2>
-          <a class="post-link" href="/technical-development%20types/2017/10/27/stranger-types.html">Stranger Types</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Oct 16, 2017</span>
-
-        <h2>
-          <a class="post-link" href="/technical-development%20simple-rules/2017/10/16/understanding-the-4-simple-rules-tests-pass.html">Understanding the 4 Simple Rules: Tests Pass</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Oct 16, 2017</span>
-
-        <h2>
-          <a class="post-link" href="/technical-development%20simple-rules/2017/10/16/understanding-the-4-simple-rules-expresses-intent.html">Understanding the 4 Simple Rules: Expresses Intent</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Oct 9, 2017</span>
-
-        <h2>
-          <a class="post-link" href="/technical-development/functional-programming/2017/10/09/functional-programming-intro-deuced.html">Functional Programming Intro-deuced</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Oct 9, 2017</span>
-
-        <h2>
-          <a class="post-link" href="/technical-development/erlang-vs-ruby/2017/10/09/erlang-vs-ruby-the-coin-changer-kata.html">Erlang vs. Ruby: The Coin Changer Kata</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Oct 5, 2017</span>
-
-        <h2>
-          <a class="post-link" href="/technical-development/functional-programming/2017/10/05/functional-programming-introduced.html">Functional Programming Introduced</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Sep 22, 2017</span>
-
-        <h2>
-          <a class="post-link" href="/technical-development/erlang-vs-ruby/2017/09/22/erlang-vs-ruby-overview.html">Erlang vs. Ruby: Overview</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Sep 22, 2017</span>
-
-        <h2>
-          <a class="post-link" href="/technical-development/erlang-vs-ruby/2017/09/22/erlang-pattern-matching-vs-ruby-conditionals.html">Erlang Pattern Matching vs. Ruby Conditionals</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Sep 22, 2017</span>
-
-        <h2>
-          <a class="post-link" href="/technical-development/erlang-vs-ruby/2017/09/22/erlang-guards-vs-ruby-ternary-operator.html">Erlang Guards vs. Ruby Ternary Operator</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">Sep 18, 2017</span>
-
-        <h2>
-          <a class="post-link" href="/professional-development/windycity-rails/2017/09/18/getting-on-track.html">Getting on Track: WindyCity Rails Presentations and Presenters that Reaffirmed My Choice to Pursue the Craft</a>
-        </h2>
-      </li>
-    
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
-
-</div>
+</article>
 
       </div>
     </main>
