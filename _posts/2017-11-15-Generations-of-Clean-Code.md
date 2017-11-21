@@ -21,7 +21,7 @@ is, and will be code_**.
 Code_. We can't separate ourselves from code or the importance of its precision.
 We are a product of that precision. It's in our DNA.
 
-#23 and Us
+## 23 and Us
 
   Recently, my parents both had there chromosomes parsed by different genetic
 information brokers (more on this later), so inheritance has been on my mind.
@@ -59,16 +59,16 @@ _Clean Code_,
 <blockquote> "...good code matters...." </blockquote>
 <img src="https://i.imgur.com/xByII.jpg" alt="...good code matters.... -Kent Beck -Robert Martin -Scott Plunkett"/>
 
-#8, Life, and Me
+## 8, Life, and Me
 
   I agree, good code matters, and I believe that information created by, with,
 or through our own life can be given to the ear of someone else, without being heard,
  and I know from experience some important lessons must be learned in solidarity with a team. 
  This begs the same pondering I began with, only in more personal terms: 
 
-_What came before me?_
-_What led to me?_  
-_What have I inherited?_  
+_What came before me?_<br>
+_What led to me?_  <br>
+_What have I inherited?_<br>  
 
   I've often asked myself those questions during or in recognition of the best 
 and worst times of my life, which always involved a team in some form or another. 
@@ -114,7 +114,7 @@ A lineage of hard work, empathy, mentorship, and shared responsibility I've
 been invited to take part in. A school of thought that reaches directly back to 
 the author of _Clean Code_.
 
-#Schools of Scott
+## Schools of Scott
 
   There's perhaps no better programming analogy nor mathematical proof for the
 concept of generational impact than what I've began to code this week: Conway's
@@ -134,9 +134,9 @@ rectangular grid.
   This project was assigned to me by my mentors Paul Pagel and
 Nicole Carpenter. I am in their school. Nicole's mentors were Zack Davy and Malcolm Newsome. I wonder what I've learned from Nicole that came from their school. At least one of Paul's mentors was Robert Martin, the author of _Clean Code_.  I wonder what I've learned from Paul that comes from Uncle Bob. Are we just copies of our mentors, met to build more mentors in the same likeness? Well, maybe in some regard and certainly I hope to immulate the best practices of my mentors but of course we're not **EXACT** copies. Still, thinking about the impact that this lineage of mentorship has had on me in both direct and indirect ways, past and present, I'm beginning to consider the future:         
 
-_What will continue on after me?_
-_What will I lead to?_  
-_What will I pass on?_
+_What will continue on after me?_<br>
+_What will I lead to?_  <br>
+_What will I pass on?_<br>
 
   I'm not sure what the School of Scott will look like, but I do hope to have put
 in the same hard work, be as empathic, and pay forward the same lessons through
