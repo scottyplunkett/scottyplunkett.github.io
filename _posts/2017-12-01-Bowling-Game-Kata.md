@@ -53,8 +53,8 @@ After the chapter I think I'll adjust those original steps a little to make them
 4. Pick pair roles.
 5. Align expectations of form and IO.
 6. Retrieve realistic data samples.
-7. <strikethrough>Brainstorm a quick Model of the problem domain.</strikethrough>Consider the highest-level testable of behavior of the application.
-8. <strikethrough>Find the end of the dependency chain, start there.</strikethrough> Red, Green, Refactor.
+7. Consider the highest-level testable of behavior of the application.
+8. Red, Green, Refactor.
 
 Much better, and a nice even set of 8. :)
 
