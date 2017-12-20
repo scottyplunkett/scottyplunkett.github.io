@@ -1,4 +1,3 @@
-# Liskov-Substituion-Principle
 ---
 layout: post
 title:  Liskov-Substituion-Principle
