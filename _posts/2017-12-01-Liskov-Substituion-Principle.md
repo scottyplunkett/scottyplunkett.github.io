@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Liskov-Substituion-Principle
+title:  Liskov-Substituion Principle
 date:   2017-12-01 14:48:09 -0500
 categories: technical-development SOLID
 ---
