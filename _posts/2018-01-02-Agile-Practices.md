@@ -30,20 +30,21 @@ the right, we value the items on the left more.
 
 Without having worked any substantial amount on a professional software team, I still find truth in this manifesto.  My favorite part, or at least the part I find most agreeable is the line, '_Responding to change over following a plan_...' It makes me think back to the Marine Corps Infantry where I saw incredibly descript plans fall apart in the field, and I witnessed leaders either rise or degrade in the face of such change. As a matter of fact, in every line of the Agile manifesto I can find a related ideal from my training for soldiering... However, the first, _**Individuals** and interactions over processes and tools_, requires a stretch of the imagination.
 
-The idea of responding to change though, is one that peaks my curiousity most.  In the USMC before any mission, a ginormous protocol called, a [5-paragraph order](http://www.trngcmd.marines.mil/Portals/207/Docs/FMTBE/Student%20Materials/FMST/209.pdf) was drawn up. Despite the name, they were never 5 paragraphs. This process at first glance is not unlike the _Waterfall_ process most software teams followed before Agile practices were established. I think similarly to waterfall methodologies, boots on the ground ( ...or in the case of a software team, the junior developers), were not expected to be involved in the team mission/objective process at a high-level. The difference is that in my experience, their was a great deal of flexibility and team culture that was decided by the individual members of small teams. [Junior enlisted are lead at the lowest level, where small-unit leaders can make adjustments](http://www.bsa325.org/bsa325/blogengine/file.axd?file=2013%2F7%2FSmall+Unit+Leadership.pdf) without creating a conflict with or distracting from a rifle-team member's individual & immediate actions ( ...writing code that solves specific problems they encounter along the way of completing a story). Software projects are an awful lot like [conducting patrols](http://www.trngcmd.marines.mil/Portals/207/Docs/TBS/B2H3317%20Patrolling%20Operations.pdf?ver=2015-03-26-101420-157), minus the *ACTUAL* fear of death for you and your teammates, there is a kdsasd
+The idea of responding to change though, is one that peaks my curiousity most.  In the USMC before any mission, a ginormous protocol called, a [5-paragraph order](http://www.trngcmd.marines.mil/Portals/207/Docs/FMTBE/Student%20Materials/FMST/209.pdf) was drawn up. Despite the name, they were never 5 paragraphs. This process at first glance is not unlike the _Waterfall_ process most software teams followed before Agile practices were established. I think similarly to waterfall methodologies, boots on the ground ( ...or in the case of a software team, the junior developers), were not expected to be involved in the team mission/objective process at a high-level. 
+
+The difference is that in my experience, their was a great deal of flexibility and team culture that was decided by the individual members of small 3-4 Marine teams. [Junior enlisted were lead at the lowest level, where small-unit leaders can make adjustments](http://www.bsa325.org/bsa325/blogengine/file.axd?file=2013%2F7%2FSmall+Unit+Leadership.pdf) without creating a conflict with or distracting from a rifle-team member's individual & immediate actions ( ...passing test by writing code that solves specific problems they encounter along the way of completing a story). It goes without saying, that not all small-unit leaders did this effectively, but I think mine did a decent job of creating a highly effective team for a couple of teenagers in charge of teenagers at war.  Software projects are an awful lot like [conducting patrols](http://www.trngcmd.marines.mil/Portals/207/Docs/TBS/B2H3317%20Patrolling%20Operations.pdf?ver=2015-03-26-101420-157), beside the *ACTUAL* fear of death for you and your teammates, when done right, there should be a similar safety and shared responsibility for making the hardest and most uncertain of tasks, the most enjoyable to complete. This is what I imagine, makes teams with high agility. 
 
 All of this revoles around accomplishing a mission.  Which in my mind is the goal of incorporating agile practices.
 
-I'll end with 4 Agile principles that drew my focus in PPP's Agile Practices chapter.
-
-2 What describe characteristics I need to catalyze:
-A.
-_Simplicity - the art of maximizing the amount of work not done.——is essential._
-& B.
+I'll end with 2 Agile principles that drew my focus in PPP's Agile Practices chapter and which I think I need to catalyze:
+<hr>
+<blockquote>_Simplicity - the art of maximizing the amount of work not done.——is essential._</blockquote>
+<br>
 <sub>paraphrased for _simplicitiy_</sub>
-_Priority - ...satisfy... ...through... ...continuous delivery of valu—..._
+<blockquote>_Priority - ...satisfy... ...through... ...continuous delivery of valu—..._</blockquote>
+<br>
+<br>
 
-2 What describe truths
 
 
 
