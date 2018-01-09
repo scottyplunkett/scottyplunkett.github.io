@@ -43,10 +43,10 @@ All of this revoles around accomplishing a mission.  Which in my mind is the goa
 
 I'll end with 2 Agile principles that drew my focus in PPP's Agile Practices chapter and which I think I need to catalyze:
 <hr>
-<blockquote>_Simplicity - the art of maximizing the amount of work not done.——is essential._</blockquote>
+<blockquote><em>Simplicity - the art of maximizing the amount of work not done.——is essential.</em></blockquote>
 <br>
 <sub>paraphrased for _simplicitiy_</sub>
-<blockquote>_Priority - ...satisfy... ...through... ...continuous delivery of valu—..._</blockquote>
+<blockquote><em>Priority - ...satisfy... ...through... ...continuous delivery of valu—...</em></blockquote>
 <br>
 <br>
 
