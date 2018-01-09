@@ -23,8 +23,7 @@ traits a ninja may have. Agility is a timeless skillset.
 
 So at some point in the not so distant past (c. 2001) after noticing an 
 overabundance of process inflation... by which I mean beaurocratic nonsense 
-infecting the _getting shtuff done_ factor of software teams, aka: [rigamarole]
-(http://www.oxfordlearnersdictionaries.com/definition/english/rigmarole?q=rigmarole), a group of [Software Ninjas](http://theconversation.com/calling-all-time-ninjas-lets-put-a-stop-to-ludicrous-job-titles-79544),
+infecting the _getting shtuff done_ factor of software teams, aka: [rigamarole](http://www.oxfordlearnersdictionaries.com/definition/english/rigmarole?q=rigmarole), a group of [Software Ninjas](http://theconversation.com/calling-all-time-ninjas-lets-put-a-stop-to-ludicrous-job-titles-79544),
  decided that the best thing they could do to manage this overgrowing 
 hinderance, was to create a guiding ideal that established agility as the 
 ultimate goal of software teams and their development efforts...
