@@ -87,7 +87,7 @@ imagine, makes teams with high agility.
 
 All of this revoles around accomplishing a mission.  Which in my mind is the goal of incorporating agile practices.
 
-I'll end with 2 Agile principles that drew my focus in PPP's Agile Practices 
+I'll end with 2 Agile principles that drew my focus in [PPP](https://www.amazon.com/Software-Development-Principles-Patterns-Practices/dp/0135974445)'s Agile Practices 
 chapter and which I think I need to catalyze:
 <hr>
 <blockquote><em>Simplicity - the art of maximizing the amount of work not 
@@ -102,19 +102,3 @@ of valu—...</em></blockquote>
 
 
 
-
-
-
-
-
-<sub style="color:gray">
-Test:
-<ul style="color:lightgray">
-<li>Does the intro have an attn getter? Yes
-<li>Does the intro describe and define the topic covered at a high lvl? Yes
-<li>Does this have some major points each mapped to a single paragraph? Yes
-<li>Does the body have one coding example? Yes
-<li>Does the conclusion summarize the information presented? Yes
-<li>Does the conclusion include at least one further reading link? Yes
-</ul>
-</sub>
