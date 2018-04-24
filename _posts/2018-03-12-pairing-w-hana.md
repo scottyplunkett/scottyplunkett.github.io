@@ -4,8 +4,7 @@ title: 'Pairing w/ Hana'
 ---
 
 Day 1:
-Today I didn't get to write any code.
-This client's office was really cool, although most of the team was out for a meeting with the customer in New York. (We were subcontracting on the project through the client, who ultimately answered to the customer)
+Although today I didn't get to write any code, I still learned a lot and did my best to help Hana. This client's office was really cool, although most of the team was out for a meeting with the customer in New York. (We were subcontracting on the project through the client, who ultimately answered to the customer)
 Without being too explicit about the project we were working on; it involed a bluetooth medical device for reading information from a patient that was connected to a mobile application, by which patients were set-up with coaches and able to track and monitor their health data and progress toward goals assigned by the coaches.
 Initially patients and coaches were set-up under the same DB table on the backend which was managed through a Phoenix app (Elixir) reachable through an Absinthe Graph-QL API.
 We began to separate the users table which included both coaches and patients into two separate tables.
